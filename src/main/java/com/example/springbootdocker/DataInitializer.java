@@ -19,8 +19,8 @@ public class DataInitializer implements CommandLineRunner {
             user1.setEmail("john.doe@example.com");
 
             User user2 = new User();
-            user2.setName("Jane Doe");
-            user2.setEmail("jane.doe@example.com");
+            user2.setName("ali Doe");
+            user2.setEmail("ali.doe@example.com");
 
             userRepository.save(user1);
             userRepository.save(user2);
