@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 version: '3.3'
 services:
   mysql:
@@ -28,3 +29,37 @@ services:
 
 volumes:
   mysql-data:
+=======
+version: '3.8'
+services:
+  mysql-db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: userdb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpass
+    ports:
+       - "3307:3306"  # Host port 3307 mapped to container port 3306
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+    networks:
+      - my-network
+
+  spring-boot-app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql-db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/userdb
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: userpass
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
+>>>>>>> 27482c1 (Initial commit of Spring Boot Docker project)
