@@ -14,12 +14,3 @@ public class SpringbootDockerApplication {
         SpringApplication.run(SpringbootDockerApplication.class, args);
     }
 }
-
-@RestController
-class UserController {
-
-    @GetMapping("/users")
-    public List<String> getUsers() {
-        return List.of("User 1", "User 2", "User 3");
-    }
-}
